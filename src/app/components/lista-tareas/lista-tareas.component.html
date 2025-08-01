@@ -1,0 +1,21 @@
+<div class="w-full md:w-1/2 mx-auto text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mt-8">
+  <ng-container *ngIf="tareas.length > 0; else sinTareas">
+    <button
+      *ngFor="let tarea of tareas"
+      type="button"
+      class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 last:border-b-0 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white group">
+    
+      <span class="flex-1 text-left truncate">
+        {{ tarea.titulo }} <span *ngIf="tarea.completada" class="text-green-600 text-xs ml-1">(Completada)</span>
+      </span>
+      <div class="flex gap-2">
+        <a [routerLink]="['/tareas', tarea.id]" class="text-blue-500 hover:underline mr-2">Detalle</a>
+        <a [routerLink]="['/editar-tarea', tarea.id]" class="text-yellow-500 hover:underline mr-2">Editar</a>
+        <button (click)="eliminarTarea(tarea.id!)" class="text-red-600 hover:underline">Eliminar</button>
+      </div>
+    </button>
+  </ng-container>
+  <ng-template #sinTareas>
+    <div class="p-4 text-center text-gray-400 dark:text-gray-300">No hay tareas registradas.</div>
+  </ng-template>
+</div>

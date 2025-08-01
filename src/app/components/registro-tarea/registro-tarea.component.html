@@ -1,0 +1,57 @@
+<div class="max-w-sm mx-auto mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <h2 class="mb-3 text-2xl font-semibold text-gray-900 dark:text-white">
+      {{ editMode ? 'Editar Tarea' : 'Agregar Tarea' }}
+    </h2>
+    <form (ngSubmit)="guardar()" #f="ngForm" autocomplete="off">
+      <div class="mb-4">
+        <label class="block mb-1 text-gray-700 dark:text-gray-300">Título</label>
+        <input
+          type="text"
+          [(ngModel)]="tarea.titulo"
+          name="titulo"
+          required
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block mb-1 text-gray-700 dark:text-gray-300">Descripción</label>
+        <input
+          type="text"
+          [(ngModel)]="tarea.descripcion"
+          name="descripcion"
+          required
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block mb-1 text-gray-700 dark:text-gray-300">Fecha</label>
+        <input
+          type="date"
+          [(ngModel)]="tarea.fecha"
+          name="fecha"
+          required
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        />
+      </div>
+      <div class="flex items-center mb-4">
+        <input
+          type="checkbox"
+          [(ngModel)]="tarea.completada"
+          name="completada"
+          id="completada"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label for="completada" class="ms-2 text-gray-700 dark:text-gray-300">Completada</label>
+      </div>
+      <button
+        type="submit"
+        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >
+        {{ editMode ? 'Actualizar' : 'Agregar' }}
+      </button>
+    </form>
+    <a routerLink="/tareas"
+       class="inline-flex font-medium items-center text-blue-600 hover:underline mt-4">
+      Volver al listado
+    </a>
+</div>
